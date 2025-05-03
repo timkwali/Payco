@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Payco</string>
+    <string name="email_hint">Enter Email</string>
+    <string name="password_hint">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="total_portfolio">Total Portfolio</string>
+    <string name="cards">Cards</string>
+    <string name="no_cards">You have not added any cards yet.</string>
+    <string name="add_card">Add Card</string>
+    <string name="view_card">View Card</string>
+    <string name="enter_card_number">Enter Card number</string>
+    <string name="enter_cvv">Enter Card CVV</string>
+    <string name="enter_expiryDate">Expiry date</string>
+</resources>
