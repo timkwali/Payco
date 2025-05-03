@@ -55,7 +55,7 @@ fun AddCardContent(
         when (effect) {
             is AddCardUiEffect.ShowSnackbar -> Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
             is AddCardUiEffect.BackToDashboard -> {
-                Toast.makeText(context, "Card added successfully.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.successfully_add_card, Toast.LENGTH_SHORT).show()
                 onNavigate()
             }
             else -> Unit

@@ -17,4 +17,5 @@
     <string name="cvv_heading">CVV</string>
     <string name="delete_card">Delete Card</string>
     <string name="successfully_delete_card">Card successfully deleted.</string>
+    <string name="successfully_add_card">Card succellfully added</string>
 </resources>
