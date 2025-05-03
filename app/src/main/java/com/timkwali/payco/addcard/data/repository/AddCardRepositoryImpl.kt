@@ -8,8 +8,6 @@ class AddCardRepositoryImpl(
     private val paycoApi: PaycoApi
 ): AddCardRepository {
     override suspend fun addCard(cardNumber: String, cvv: String, expiryDate: String): UserCard? {
-        println("ALLCARs-=====> ${paycoApi.getCards()}")
-
         return paycoApi.addCard(cardNumber, cvv, expiryDate)
     }
 }

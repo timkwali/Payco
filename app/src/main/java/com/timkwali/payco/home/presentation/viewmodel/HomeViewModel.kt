@@ -45,7 +45,9 @@ class HomeViewModel(
         getCards.invoke().collectLatest {
             _homeState.value = _homeState.value.copy(isLoading = it is Resource.Loading)
             when(it) {
-                is Resource.Success<*> -> it.data?.let { cards -> _homeState.value = _homeState.value.copy(cards = cards) }
+                is Resource.Success<*> -> {
+                    it.data?.let { cards -> _homeState.value = _homeState.value.copy(cards = cards) }
+                }
                 is Resource.Error<*> -> _uiEffect.emit(HomeUiEffect.ShowSnackbar(it.message ?: "Error fetching Cards."))
                 else -> Unit
             }

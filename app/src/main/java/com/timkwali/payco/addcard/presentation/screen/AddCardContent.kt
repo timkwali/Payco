@@ -79,7 +79,7 @@ fun AddCardContent(
             onValueChange = { if(it.length <= MAX_CARD_NUMBERS) onEvent(AddCardEvent.OnCardNumberChange(it)) },
             leadingIcon = { IconFromDrawable(R.drawable.ic_numbers, modifier = Modifier.size(24.dp)) },
             trailingIcon = trailingIcon?.let { { Image(painterResource(it), contentDescription = "card logo", modifier = Modifier.size(24.dp)) } },
-            label = { BodyText(text = stringResource(R.string.enter_card_number), color = Color.Black) },
+            label = { BodyText(text = stringResource(R.string.enter_card_number), color = colorScheme.tertiary.copy(alpha = 0.5f)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
 
@@ -95,7 +95,7 @@ fun AddCardContent(
                 onValueChange = { if(it.length <= MAX_CVV_NUMBERS) onEvent(AddCardEvent.OnCvvChange(it)) },
                 modifier = Modifier.weight(1f),
                 leadingIcon = { IconFromDrawable(R.drawable.ic_key, modifier = Modifier.size(24.dp)) },
-                label = { BodyText(text = stringResource(R.string.enter_cvv), color = Color.Black) },
+                label = { BodyText(text = stringResource(R.string.enter_cvv), color = colorScheme.tertiary.copy(alpha = 0.5f)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
             Spacer(modifier = Modifier.width(4.dp))
@@ -111,7 +111,7 @@ fun AddCardContent(
                 },
                 modifier = Modifier.weight(1f),
                 leadingIcon = { IconFromDrawable(R.drawable.ic_date, modifier = Modifier.size(24.dp)) },
-                label = { BodyText(text = stringResource(R.string.enter_expiryDate), color = Color.Black) },
+                label = { BodyText(text = stringResource(R.string.enter_expiryDate), color = colorScheme.tertiary.copy(alpha = 0.5f)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
         }

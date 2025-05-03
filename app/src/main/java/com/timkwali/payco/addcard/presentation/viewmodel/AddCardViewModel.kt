@@ -44,7 +44,6 @@ class AddCardViewModel(
                 _addCardState.value = _addCardState.value.copy(isLoading = it is Resource.Loading)
                 when(it) {
                     is Resource.Success<*> -> {
-                        println("VIEWMODELCARD------->${it.data}")
                         it.data?.let { userCard -> _addCardState.value = _addCardState.value.copy(addCardResponse = userCard) }
                         _uiEffect.emit(AddCardUiEffect.BackToDashboard)
                     }

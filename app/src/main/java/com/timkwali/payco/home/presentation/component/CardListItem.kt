@@ -47,6 +47,6 @@ fun CardListItem(
 
         Spacer(modifier = Modifier.width(5.dp))
 
-        BodyText(text = "$${card.amount}", modifier = Modifier.padding(end = 5.dp))
+        BodyText(text = "$${card.amount}")
     }
 }

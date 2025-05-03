@@ -1,5 +1,6 @@
 package com.timkwali.payco.home.presentation.screen
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -38,8 +39,8 @@ fun HomeScreen(backStackEntry: NavBackStackEntry, navController: NavController) 
             effect = effect.value,
             onEvent = { homeViewModel.onEvent(it) },
             onAddCardNavigate = { navController.navigate(Routes.AddCard) },
-            onCardDetailsNavigate = {},
-            modifier = Modifier
+            onCardDetailsNavigate = { navController.navigate("${Routes.CardDetails}/$name/${it.id}") },
+            modifier = Modifier.padding(contentPadding)
         )
     }
 

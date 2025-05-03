@@ -74,7 +74,7 @@ fun LoginContent(
             enabled = !loginState.isLoading,
             onValueChange = { onEvent(LoginEvent.OnEmailChange(it)) },
             leadingIcon = { IconFromDrawable(R.drawable.ic_email, modifier = Modifier.size(24.dp)) },
-            label = { BodyText(text = stringResource(R.string.email_hint), color = Color.Black) }
+            label = { BodyText(text = stringResource(R.string.email_hint), color = colorScheme.tertiary.copy(alpha = 0.5f)) }
         )
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -84,7 +84,7 @@ fun LoginContent(
             enabled = !loginState.isLoading,
             onValueChange = { onEvent(LoginEvent.OnPasswordChange(it)) },
             leadingIcon = { IconFromDrawable(R.drawable.ic_key, modifier = Modifier.size(24.dp)) },
-            label = { BodyText(text = stringResource(R.string.password_hint), color = Color.Black) },
+            label = { BodyText(text = stringResource(R.string.password_hint), color = colorScheme.tertiary.copy(alpha = 0.5f)) },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )

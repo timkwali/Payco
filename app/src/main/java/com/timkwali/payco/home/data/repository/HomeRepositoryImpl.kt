@@ -9,7 +9,6 @@ class HomeRepositoryImpl(
 ): HomeRepository {
     override suspend fun getCards(): List<UserCard> {
         val cards = dummyHomeApi.getCards()
-        println("------->$cards")
         return cards
     }
 }

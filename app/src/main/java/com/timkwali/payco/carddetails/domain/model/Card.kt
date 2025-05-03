@@ -1,4 +1,4 @@
-package com.timkwali.payco.home.domain.model
+package com.timkwali.payco.carddetails.domain.model
 
 data class Card(
     val id: Int,
@@ -8,7 +8,7 @@ data class Card(
     val amount: Int
 ) {
     val spacedNumber = retrievedSpacedNumber()
-    val maskedNumber =  "**** **** **** ${cardNumber.takeLast(4)}"
+    val maskedNumber = "**** **** **** ${cardNumber.takeLast(4)}"
     val typeOfCard = getCardType()
 
     private fun getCardType(): CardType? {

@@ -7,8 +7,14 @@
     <string name="cards">Cards</string>
     <string name="no_cards">You have not added any cards yet.</string>
     <string name="add_card">Add Card</string>
-    <string name="view_card">View Card</string>
+    <string name="card_details">Card Details</string>
     <string name="enter_card_number">Enter Card number</string>
     <string name="enter_cvv">Enter Card CVV</string>
     <string name="enter_expiryDate">Expiry date</string>
+    <string name="card_number">Card Number</string>
+    <string name="name_heading">Name</string>
+    <string name="exp_date_heading">Exp Date</string>
+    <string name="cvv_heading">CVV</string>
+    <string name="delete_card">Delete Card</string>
+    <string name="successfully_delete_card">Card successfully deleted.</string>
 </resources>

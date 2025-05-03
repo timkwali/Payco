@@ -39,5 +39,4 @@ fun AddCardScreen(
             modifier = Modifier.padding(contentPadding)
         )
     }
-
 }
