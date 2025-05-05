@@ -84,7 +84,7 @@ fun HomeContent(
             )
         } else {
             CardList(
-                cards = homeState.cards,
+                cards = homeState.cards.reversed(),
                 onCardClick = { onEvent(HomeEvent.OnCardClick(it)) }
             )
         }
