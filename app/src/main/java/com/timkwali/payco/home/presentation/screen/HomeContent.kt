@@ -95,11 +95,11 @@ fun HomeContent(
 @Preview
 @Composable
 fun HomeContentPreview() {
-//    HomeContent(
-//        homeState = HomeState(),
-//        effect = null,
-//        onEvent = {},
-//        onAddCardNavigate = {},
-//        onCardDetailsNavigate = {}
-//    )
+    HomeContent(
+        homeState = HomeState(),
+        effect = null,
+        onEvent = {},
+        onAddCardNavigate = {},
+        onCardDetailsNavigate = {}
+    )
 }

@@ -1,6 +1,7 @@
 package com.timkwali.payco.home.domain.model
 
 import com.timkwali.payco.core.domain.model.Card
+import com.timkwali.payco.core.utils.groupByThrees
 
 data class HomeState(
     val name: String = "",
@@ -8,7 +9,7 @@ data class HomeState(
     val cards: List<Card> = emptyList(),
     val isLoading: Boolean = false,
 ) {
-    val totalPortfolio: Int = getPortfolio()
+    val totalPortfolio: String = getPortfolio().groupByThrees()
 
     private fun getPortfolio(): Int {
         return cards.sumOf { c -> c.amount }

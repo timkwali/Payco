@@ -20,6 +20,7 @@ import com.timkwali.payco.carddetails.presentation.component.UserCardProfile
 import com.timkwali.payco.carddetails.presentation.viewmodel.CardDetailsEvent
 import com.timkwali.payco.carddetails.presentation.viewmodel.CardDetailsUiEffect
 import com.timkwali.payco.core.presentation.components.button.PaycoButton
+import com.timkwali.payco.core.presentation.components.progress.PaycoCircularProgress
 
 @Composable
 fun CardDetailsContent(
@@ -66,8 +67,7 @@ fun CardDetailsContent(
         )
 
         if(cardDetailsState.isLoading) {
-            CircularProgressIndicator(
-                color = colorScheme.secondary,
+            PaycoCircularProgress(
                 modifier = Modifier.padding(top = 10.dp)
                     .align(Alignment.CenterHorizontally)
             )

@@ -40,7 +40,8 @@ fun PaycoTextField(
         focusedContainerColor = colorScheme.onSecondary,
         focusedTextColor = colorScheme.secondary,
         cursorColor = colorScheme.secondary,
-        unfocusedIndicatorColor = Color.Transparent
+        unfocusedIndicatorColor = Color.Transparent,
+        unfocusedTextColor = colorScheme.tertiary.copy(alpha = 0.7f)
     )
 ) {
     TextField(

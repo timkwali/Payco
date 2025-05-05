@@ -51,11 +51,9 @@ object PaycoApi {
         userCardResponses.forEach {
             if(it.id == id) {
                 userCardResponses.remove(it)
-                println("delett truuuuuuuuueeeeeee")
                 return true
             }
         }
-        println("delett falllllsssssseeee")
         return false
     }
 }

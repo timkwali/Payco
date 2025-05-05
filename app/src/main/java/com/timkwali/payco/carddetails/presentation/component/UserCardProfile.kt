@@ -41,7 +41,7 @@ fun UserCardProfile(
             .padding(horizontal = 16.dp, vertical = 16.dp)
     ) {
 
-        val image = when(cardDetailsState.getCardResponse?.typeOfCard) {
+        val image = when(cardDetailsState.card?.typeOfCard) {
             CardType.MasterCard -> R.drawable.ic_master_card
             CardType.Visa -> R.drawable.ic_visa
             else -> R.drawable.ic_card
@@ -61,7 +61,7 @@ fun UserCardProfile(
         ) {
             BodyText(text = stringResource(R.string.card_number))
             Spacer(modifier = Modifier.height(5.dp))
-            TitleText(text = cardDetailsState.getCardResponse?.maskedNumber ?: "")
+            TitleText(text = cardDetailsState.card?.spacedNumber ?: "")
         }
 
         Row(
@@ -76,14 +76,14 @@ fun UserCardProfile(
 
             TitleBodyView(
                 title = stringResource(R.string.exp_date_heading),
-                body = cardDetailsState.getCardResponse?.expiryDate ?: ""
+                body = cardDetailsState.card?.expiryDate ?: ""
             )
 
             Spacer(modifier = Modifier.width(10.dp))
 
             TitleBodyView(
                 title = stringResource(R.string.cvv_heading),
-                body = cardDetailsState.getCardResponse?.cvv ?: ""
+                body = cardDetailsState.card?.cvv ?: ""
             )
         }
     }

@@ -55,7 +55,7 @@ class CardDetailsViewModel(
         getCard(_cardDetailsState.value.cardId).collectLatest {
             _cardDetailsState.value = _cardDetailsState.value.copy(isLoading = it is Resource.Loading)
             when(it) {
-                is Resource.Success<*> -> { it.data?.let { card -> _cardDetailsState.value = _cardDetailsState.value.copy(getCardResponse = card) } }
+                is Resource.Success<*> -> { it.data?.let { card -> _cardDetailsState.value = _cardDetailsState.value.copy(card = card) } }
                 is Resource.Error<*> -> { _uiEffect.emit(CardDetailsUiEffect.ShowSnackbar(it.message ?: "Error getting Card")) }
                 else -> Unit
             }

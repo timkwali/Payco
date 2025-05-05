@@ -40,7 +40,10 @@ class AddCardViewModel(
     @RequiresApi(Build.VERSION_CODES.O)
     private fun addCard() = viewModelScope.launch(Dispatchers.IO){
         _addCardState.value.apply {
-            addNewCard.invoke(cardNumber, cvv, expiryDate).collectLatest {
+            addNewCard.invoke(
+                cardNumber, cvv,
+                expiryDate.formatExpiry()
+            ).collectLatest {
                 _addCardState.value = _addCardState.value.copy(isLoading = it is Resource.Loading)
                 when(it) {
                     is Resource.Success<*> -> {
@@ -51,6 +54,13 @@ class AddCardViewModel(
                     else -> Unit
                 }
             }
+        }
+    }
+
+    private fun String.formatExpiry(): String {
+        return when {
+            this.length <= 2 -> this
+            else -> this.substring(0, 2) + "/" + this.substring(2)
         }
     }
 }

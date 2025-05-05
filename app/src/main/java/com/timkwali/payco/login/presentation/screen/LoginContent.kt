@@ -34,6 +34,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.timkwali.payco.R
 import com.timkwali.payco.core.presentation.components.button.PaycoButton
 import com.timkwali.payco.core.presentation.components.image.IconFromDrawable
+import com.timkwali.payco.core.presentation.components.progress.PaycoCircularProgress
 import com.timkwali.payco.core.presentation.components.text.BodyText
 import com.timkwali.payco.core.presentation.components.text.TitleText
 import com.timkwali.payco.core.presentation.components.textfield.PaycoTextField
@@ -74,7 +75,7 @@ fun LoginContent(
         ) {
             IconFromDrawable(
                 drawable = R.drawable.ic_app_logo,
-                tint = colorScheme.onSecondary,
+                tint = colorScheme.tertiary,
                 size = 50.dp,
                 contentDescription = stringResource(R.string.app_logo)
             )
@@ -94,7 +95,8 @@ fun LoginContent(
             enabled = !loginState.isLoading,
             onValueChange = { onEvent(LoginEvent.OnEmailChange(it)) },
             leadingIcon = { IconFromDrawable(R.drawable.ic_email, modifier = Modifier.size(24.dp)) },
-            label = { BodyText(text = stringResource(R.string.email_hint), color = colorScheme.tertiary.copy(alpha = 0.5f)) }
+            label = { BodyText(text = stringResource(R.string.email_hint), color = colorScheme.tertiary.copy(alpha = 0.3f)) },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
         )
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -104,7 +106,7 @@ fun LoginContent(
             enabled = !loginState.isLoading,
             onValueChange = { onEvent(LoginEvent.OnPasswordChange(it)) },
             leadingIcon = { IconFromDrawable(R.drawable.ic_key, modifier = Modifier.size(24.dp)) },
-            label = { BodyText(text = stringResource(R.string.password_hint), color = colorScheme.tertiary.copy(alpha = 0.5f)) },
+            label = { BodyText(text = stringResource(R.string.password_hint), color = colorScheme.tertiary.copy(alpha = 0.3f)) },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )
@@ -118,10 +120,10 @@ fun LoginContent(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp)
         )
 
-        if(loginState.isLoading){
-            CircularProgressIndicator(
-                color = colorScheme.secondary,
-                modifier = Modifier.padding(top = 10.dp)
+        if(loginState.isLoading) {
+            PaycoCircularProgress(
+                modifier = Modifier
+                    .padding(top = 10.dp)
                     .align(Alignment.CenterHorizontally)
             )
         }
