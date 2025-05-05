@@ -3,6 +3,7 @@ package com.timkwali.payco.carddetails.presentation.screen
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -29,6 +30,7 @@ fun CardDetailsScreen(
     val effect = cardDetailsViewModel.uiEffect.collectAsStateWithLifecycle(null)
     val name = backStackEntry.arguments?.getString("name") ?: ""
     val cardId = backStackEntry.arguments?.getInt("cardId") ?: 0
+    val scrollState = rememberScrollState()
 
     LaunchedEffect(name) {
         cardDetailsViewModel.updateCardDetailsState(cardId, name)
@@ -46,7 +48,8 @@ fun CardDetailsScreen(
             onEvent = { cardDetailsViewModel.onEvent(it) },
             effect = effect.value,
             modifier = Modifier.padding(contentPadding),
-            onNavigate = { navController.popBackStack() }
+            onNavigate = { navController.popBackStack() },
+            scrollState = scrollState
         )
     }
 }

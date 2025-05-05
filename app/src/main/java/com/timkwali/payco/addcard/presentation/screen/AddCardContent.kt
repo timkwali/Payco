@@ -2,6 +2,7 @@ package com.timkwali.payco.addcard.presentation.screen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
@@ -50,6 +52,7 @@ fun AddCardContent(
     effect: AddCardUiEffect?,
     onEvent: (AddCardEvent) -> Unit,
     onNavigate: () -> Unit,
+    scrollState: ScrollState,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -71,6 +74,7 @@ fun AddCardContent(
     Column(
         modifier = modifier
             .padding(horizontal = 16.dp, vertical = 24.dp)
+            .verticalScroll(scrollState)
     ) {
         val trailingIcon = when {
             addCardState.cardNumber.length < 4 -> null
@@ -149,5 +153,7 @@ fun AddCardContent(
                     .align(Alignment.CenterHorizontally)
             )
         }
+
+        Spacer(modifier = Modifier.height(24.dp))
     }
 }

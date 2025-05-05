@@ -1,5 +1,6 @@
 package com.timkwali.payco.login.presentation.screen
 
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
@@ -12,6 +13,7 @@ fun LoginScreen(navController: NavHostController) {
     val loginViewModel: LoginViewModel = koinViewModel()
     val loginState = loginViewModel.loginState.collectAsStateWithLifecycle()
     val uiEffect = loginViewModel.uiEffect.collectAsStateWithLifecycle(null)
+    val scrollState = rememberScrollState()
 
     LoginContent(
         loginState = loginState.value,
@@ -25,5 +27,6 @@ fun LoginScreen(navController: NavHostController) {
             )
         },
         onEvent = { loginViewModel.onEvent(it) },
+        scrollState = scrollState
     )
 }

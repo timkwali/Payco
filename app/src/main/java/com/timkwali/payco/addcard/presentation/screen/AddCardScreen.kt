@@ -3,6 +3,7 @@ package com.timkwali.payco.addcard.presentation.screen
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -24,6 +25,7 @@ fun AddCardScreen(
     val addCardViewModel: AddCardViewModel = koinViewModel()
     val addCardState = addCardViewModel.addCardState.collectAsStateWithLifecycle()
     val uiEffect = addCardViewModel.uiEffect.collectAsStateWithLifecycle(null)
+    val scrollState = rememberScrollState()
 
     Scaffold(
         topBar = { PaycoAppBar(
@@ -36,7 +38,8 @@ fun AddCardScreen(
             effect = uiEffect.value,
             onEvent = { addCardViewModel.onEvent(event = it) },
             onNavigate = { navController.popBackStack() },
-            modifier = Modifier.padding(contentPadding)
+            modifier = Modifier.padding(contentPadding),
+            scrollState = scrollState
         )
     }
 }

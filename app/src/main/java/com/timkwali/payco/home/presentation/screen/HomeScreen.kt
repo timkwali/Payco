@@ -1,6 +1,7 @@
 package com.timkwali.payco.home.presentation.screen
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -21,6 +22,7 @@ fun HomeScreen(backStackEntry: NavBackStackEntry, navController: NavController) 
     val effect = homeViewModel.uiEffect.collectAsStateWithLifecycle(null)
     val name = backStackEntry.arguments?.getString("name") ?: ""
     val email = backStackEntry.arguments?.getString("email") ?: ""
+    val scrollState = rememberScrollState()
 
     LaunchedEffect(name) {
         homeViewModel.updateUserInfo(name, email)
@@ -36,12 +38,9 @@ fun HomeScreen(backStackEntry: NavBackStackEntry, navController: NavController) 
             effect = effect.value,
             onEvent = { homeViewModel.onEvent(it) },
             onAddCardNavigate = { navController.navigate(Screen.AddCard.route) },
-            onCardDetailsNavigate = {
-                navController.navigate(
-                    Screen.CardDetailsWithArgs.createRoute(name = name, cardId = it.id)
-                )
-            },
-            modifier = Modifier.padding(contentPadding)
+            onCardDetailsNavigate = { navController.navigate(Screen.CardDetailsWithArgs.createRoute(name = name, cardId = it.id)) },
+            modifier = Modifier.padding(contentPadding),
+            scrollState = scrollState
         )
     }
 

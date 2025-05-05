@@ -2,6 +2,7 @@ package com.timkwali.payco.login.presentation.screen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -10,7 +11,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
@@ -51,6 +54,7 @@ fun LoginContent(
     effect: LoginUiEffect?,
     onNavigate: () -> Unit,
     onEvent: (LoginEvent) -> Unit,
+    scrollState: ScrollState,
     modifier: Modifier = Modifier
 ) {
 
@@ -66,7 +70,8 @@ fun LoginContent(
 
     Column(
         modifier  = modifier
-            .padding(16.dp),
+            .padding(16.dp)
+            .verticalScroll(scrollState),
     ) {
 
         Row(
@@ -127,11 +132,13 @@ fun LoginContent(
                     .align(Alignment.CenterHorizontally)
             )
         }
+
+        Spacer(modifier = Modifier.height(24.dp))
     }
 }
 
 @Preview
 @Composable
 fun LoginContentPreview() {
-    LoginContent(LoginState(), null, {}, {})
+    LoginContent(LoginState(), null, {}, {}, rememberScrollState())
 }

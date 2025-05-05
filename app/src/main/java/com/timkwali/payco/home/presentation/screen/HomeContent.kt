@@ -1,11 +1,14 @@
 package com.timkwali.payco.home.presentation.screen
 
 import android.widget.Toast
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -33,6 +36,7 @@ fun HomeContent(
     onAddCardNavigate: () -> Unit,
     onCardDetailsNavigate: (Card) -> Unit,
     onEvent: (HomeEvent) -> Unit,
+    scrollState: ScrollState,
     modifier: Modifier = Modifier
 ) {
 
@@ -54,6 +58,7 @@ fun HomeContent(
     Column(
         modifier = modifier
             .padding(all = 16.dp)
+            .verticalScroll(scrollState)
     ) {
         IconFromDrawable(
             drawable = R.drawable.ic_app_logo,
@@ -85,7 +90,7 @@ fun HomeContent(
         } else {
             CardList(
                 cards = homeState.cards.reversed(),
-                onCardClick = { onEvent(HomeEvent.OnCardClick(it)) }
+                onCardClick = { onEvent(HomeEvent.OnCardClick(it)) },
             )
         }
     }
@@ -100,6 +105,7 @@ fun HomeContentPreview() {
         effect = null,
         onEvent = {},
         onAddCardNavigate = {},
-        onCardDetailsNavigate = {}
+        onCardDetailsNavigate = {},
+        scrollState = rememberScrollState()
     )
 }
