@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.unit.dp
 import com.timkwali.payco.R
 import com.timkwali.payco.carddetails.domain.model.CardDetailsState
@@ -26,6 +27,7 @@ import com.timkwali.payco.core.domain.model.CardType
 import com.timkwali.payco.core.presentation.components.image.IconFromDrawable
 import com.timkwali.payco.core.presentation.components.text.BodyText
 import com.timkwali.payco.core.presentation.components.text.TitleText
+import java.util.Locale
 
 @Composable
 fun UserCardProfile(
@@ -69,7 +71,7 @@ fun UserCardProfile(
         ) {
             TitleBodyView(
                 title = stringResource(R.string.name_heading),
-                body = cardDetailsState.name
+                body = cardDetailsState.name.capitalize(Locale.ROOT)
             )
 
             Spacer(modifier = Modifier.width(10.dp))
