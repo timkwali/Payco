@@ -10,7 +10,7 @@ data class Card(
     val amount: Int
 ) {
     val spacedNumber = cardNumber.chunked(4).joinToString(" ")
-    val maskedNumber =  "**** **** **** ${cardNumber.takeLast(4)}"
+    val maskedNumber = "**** **** **** ${cardNumber.takeLast(4)}"
     val typeOfCard = getCardType()
     val formatedAmount = amount.groupByThrees()
 
@@ -22,9 +22,4 @@ data class Card(
             CardType.MasterCard
         } else CardType.Visa
     }
-}
-
-sealed class CardType{
-    object Visa: CardType()
-    object MasterCard: CardType()
 }
