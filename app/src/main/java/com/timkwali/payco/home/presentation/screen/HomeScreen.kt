@@ -9,7 +9,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.timkwali.payco.core.presentation.components.button.PaycoFloatingActionButton
-import com.timkwali.payco.core.presentation.navigation.Routes
+import com.timkwali.payco.core.presentation.navigation.Screen
 import com.timkwali.payco.home.presentation.viewmodel.HomeEvent
 import com.timkwali.payco.home.presentation.viewmodel.HomeViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -35,8 +35,12 @@ fun HomeScreen(backStackEntry: NavBackStackEntry, navController: NavController) 
             homeState = homeState.value,
             effect = effect.value,
             onEvent = { homeViewModel.onEvent(it) },
-            onAddCardNavigate = { navController.navigate(Routes.AddCard) },
-            onCardDetailsNavigate = { navController.navigate("${Routes.CardDetails}/$name/${it.id}") },
+            onAddCardNavigate = { navController.navigate(Screen.AddCard.route) },
+            onCardDetailsNavigate = {
+                navController.navigate(
+                    Screen.CardDetailsWithArgs.createRoute(name = name, cardId = it.id)
+                )
+            },
             modifier = Modifier.padding(contentPadding)
         )
     }
