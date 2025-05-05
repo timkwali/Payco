@@ -13,7 +13,7 @@ class DeleteCard(
         try {
             val response = cardDetailsRepository.deleteCard(id)
             if(!response) throw Exception("Error deleting Card")
-            emit(Resource.Success(response))
+            emit(Resource.Success(true))
         } catch (e: Exception) {
             emit(Resource.Error(e.message))
         }

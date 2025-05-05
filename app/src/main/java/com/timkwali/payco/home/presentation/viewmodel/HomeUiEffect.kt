@@ -1,7 +1,6 @@
 package com.timkwali.payco.home.presentation.viewmodel
 
-import com.timkwali.payco.home.domain.model.Card
-import com.timkwali.payco.login.presentation.viewmodel.LoginUiEffect
+import com.timkwali.payco.core.domain.model.Card
 
 sealed class HomeUiEffect {
     data class ShowSnackbar(val message: String) : HomeUiEffect()

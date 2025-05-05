@@ -2,7 +2,7 @@ package com.timkwali.payco.carddetails.data.repository
 
 import com.timkwali.payco.carddetails.domain.repository.CardDetailsRepository
 import com.timkwali.payco.core.data.api.PaycoApi
-import com.timkwali.payco.core.data.api.model.UserCard
+import com.timkwali.payco.core.data.api.model.UserCardResponse
 
 class CardDetailsRepositoryImpl(
     private val paycoApi: PaycoApi
@@ -11,7 +11,7 @@ class CardDetailsRepositoryImpl(
         return paycoApi.deleteCard(id)
     }
 
-    override suspend fun getCardById(id: Int): UserCard? {
+    override suspend fun getCardById(id: Int): UserCardResponse? {
         return paycoApi.getCardById(id)
     }
 }

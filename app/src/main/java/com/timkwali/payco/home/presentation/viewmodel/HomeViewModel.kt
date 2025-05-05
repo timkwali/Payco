@@ -3,7 +3,7 @@ package com.timkwali.payco.home.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.timkwali.payco.core.utils.Resource
-import com.timkwali.payco.home.domain.model.Card
+import com.timkwali.payco.core.domain.model.Card
 import com.timkwali.payco.home.domain.model.HomeState
 import com.timkwali.payco.home.domain.usecase.GetCards
 import kotlinx.coroutines.Dispatchers

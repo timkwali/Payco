@@ -1,57 +1,61 @@
 package com.timkwali.payco.core.data.api
 
 import com.timkwali.payco.core.utils.SIMULATED_NETWORK_DELAY
-import com.timkwali.payco.core.data.api.model.UserCard
+import com.timkwali.payco.core.data.api.model.UserCardResponse
 import kotlinx.coroutines.delay
 
 object PaycoApi {
-    private var userCards = mutableListOf<UserCard>()
+    private var userCardResponses = mutableListOf<UserCardResponse>()
 
-    suspend fun getCards(): List<UserCard> {
+    suspend fun getCards(): List<UserCardResponse> {
         delay(SIMULATED_NETWORK_DELAY)
-        return userCards
+        return userCardResponses
     }
 
     suspend fun addCard(
         cardNumber: String?,
         cvv: String?,
         expiryDate: String?,
-    ): UserCard? {
+    ): UserCardResponse? {
         delay(SIMULATED_NETWORK_DELAY)
-        if (userCards.any { it.cardNumber == cardNumber }) return null
+        if (userCardResponses.any { it.cardNumber == cardNumber }) return null
 
         var finalId = 0
-        val existingIds = userCards.map { it.id }.toSet()
+        val existingIds = userCardResponses.map { it.id }.toSet()
         while (existingIds.contains(finalId)) {
             finalId = (1..5000).random()
         }
 
-        val newCard = UserCard(
+        val newCard = UserCardResponse(
             id = finalId,
             cardNumber = cardNumber,
             cvv = cvv,
             expiryDate = expiryDate,
             amount = (1..5000).random()
         )
-        userCards.add(newCard)
+        userCardResponses.add(newCard)
         return newCard
     }
 
-    suspend fun getCardById(id: Int): UserCard? {
+    suspend fun getCardById(id: Int): UserCardResponse? {
         delay(SIMULATED_NETWORK_DELAY)
-        var userCard: UserCard? = null
-        userCards.forEach {
-            if(it.id == id) userCard = it
+        var userCardResponse: UserCardResponse? = null
+        userCardResponses.forEach {
+            if(it.id == id) userCardResponse = it
         }
-        return userCard
+        return userCardResponse
     }
 
     suspend fun deleteCard(id: Int): Boolean {
         delay(SIMULATED_NETWORK_DELAY)
-        userCards.forEach {
-            if(it.id == id) userCards.remove(it)
-            return true
+        userCardResponses.forEach {
+            if(it.id == id) {
+                userCardResponses.remove(it)
+                println("delett truuuuuuuuueeeeeee")
+                return true
+            }
         }
+        println("delett falllllsssssseeee")
         return false
     }
 }

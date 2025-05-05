@@ -1,5 +1,7 @@
 package com.timkwali.payco.home.domain.model
 
+import com.timkwali.payco.core.domain.model.Card
+
 data class HomeState(
     val name: String = "",
     val email: String = "",

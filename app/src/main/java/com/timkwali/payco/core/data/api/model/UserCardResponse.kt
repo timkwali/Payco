@@ -1,6 +1,6 @@
 package com.timkwali.payco.core.data.api.model
 
-data class UserCard(
+data class UserCardResponse(
     val id: Int?,
     val cardNumber: String?,
     val cvv: String?,

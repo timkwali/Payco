@@ -11,7 +11,7 @@ import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.timkwali.payco.home.domain.model.Card
+import com.timkwali.payco.core.domain.model.Card
 
 @Composable
 fun CardList(

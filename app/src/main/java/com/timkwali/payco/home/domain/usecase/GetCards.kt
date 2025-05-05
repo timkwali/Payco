@@ -1,7 +1,7 @@
 package com.timkwali.payco.home.domain.usecase
 
 import com.timkwali.payco.core.utils.Resource
-import com.timkwali.payco.home.domain.model.Card
+import com.timkwali.payco.core.domain.model.Card
 import com.timkwali.payco.home.domain.repository.HomeRepository
 import kotlinx.coroutines.flow.flow
 

@@ -4,7 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.text.isDigitsOnly
 import com.timkwali.payco.addcard.domain.repository.AddCardRepository
-import com.timkwali.payco.core.data.api.model.UserCard
+import com.timkwali.payco.core.data.api.model.UserCardResponse
 import com.timkwali.payco.core.utils.Resource
 import kotlinx.coroutines.flow.flow
 import java.time.LocalDate
@@ -19,7 +19,7 @@ class AddNewCard(
         cardNumber: String,
         cvv: String,
         expiryDate: String
-    ) = flow<Resource<UserCard?>> {
+    ) = flow<Resource<UserCardResponse?>> {
         emit(Resource.Loading())
 
         try {
@@ -27,7 +27,9 @@ class AddNewCard(
             if(!isCvvValid(cvv)) throw Exception("Please provide a valid CVV.")
             if(!isExpiryDateValid(expiryDate)) throw Exception("Please provide a valid expiry date.")
 
-            emit(Resource.Success(addCardRepository.addCard(cardNumber, cvv, expiryDate)))
+            addCardRepository.addCard(cardNumber, cvv, expiryDate)?.let {
+                emit(Resource.Success(it))
+            } ?: throw Exception("Card already exists")
         } catch (e: Exception) {
             emit(Resource.Error(e.message))
         }

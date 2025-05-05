@@ -33,24 +33,19 @@ class LoginViewModel(
         }
     }
 
-    private fun submit() = viewModelScope.launch(Dispatchers.IO){
+    private fun submit() = viewModelScope.launch(Dispatchers.IO) {
         login.invoke(
-            loginState.value.email,
-            loginState.value.password
+            email = loginState.value.email.trim(),
+            password = loginState.value.password.trim()
         ).collectLatest {
-            login.invoke(
-                email = loginState.value.email,
-                password = loginState.value.password
-            ).collectLatest {
-                _loginState.value = _loginState.value.copy(isLoading = it is Resource.Loading)
-                when(it) {
-                    is Resource.Success<*> -> {
-                        it.data?.let { loginResponse -> _loginState.value = _loginState.value.copy(loginResponse = loginResponse) }
-                        _uiEffect.emit(LoginUiEffect.NavigateToDashboard)
-                    }
-                    is Resource.Error<*> -> _uiEffect.emit(LoginUiEffect.ShowSnackbar(it.message ?: "Error logging in."))
-                    else -> Unit
+            _loginState.value = _loginState.value.copy(isLoading = it is Resource.Loading)
+            when(it) {
+                is Resource.Success<*> -> {
+                    it.data?.let { loginResponse -> _loginState.value = _loginState.value.copy(loginResponse = loginResponse) }
+                    _uiEffect.emit(LoginUiEffect.NavigateToDashboard)
                 }
+                is Resource.Error<*> -> _uiEffect.emit(LoginUiEffect.ShowSnackbar(it.message ?: "Error logging in."))
+                else -> Unit
             }
         }
     }

@@ -15,8 +15,8 @@ import androidx.compose.ui.unit.dp
 import com.timkwali.payco.R
 import com.timkwali.payco.core.presentation.components.text.BodyText
 import com.timkwali.payco.core.presentation.components.text.SubTitleText
-import com.timkwali.payco.home.domain.model.Card
-import com.timkwali.payco.home.domain.model.CardType
+import com.timkwali.payco.core.domain.model.Card
+import com.timkwali.payco.core.domain.model.CardType
 
 @Composable
 fun CardListItem(

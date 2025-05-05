@@ -1,6 +1,6 @@
 package com.timkwali.payco.carddetails.domain.usecase
 
-import com.timkwali.payco.carddetails.domain.model.Card
+import com.timkwali.payco.core.domain.model.Card
 import com.timkwali.payco.carddetails.domain.repository.CardDetailsRepository
 import com.timkwali.payco.core.utils.Resource
 import kotlinx.coroutines.flow.flow

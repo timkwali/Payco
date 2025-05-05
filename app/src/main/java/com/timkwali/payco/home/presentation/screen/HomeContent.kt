@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -17,7 +18,8 @@ import androidx.compose.ui.unit.dp
 import com.timkwali.payco.R
 import com.timkwali.payco.core.presentation.components.text.BodyText
 import com.timkwali.payco.core.presentation.components.text.SubTitleText
-import com.timkwali.payco.home.domain.model.Card
+import com.timkwali.payco.core.domain.model.Card
+import com.timkwali.payco.core.presentation.components.image.IconFromDrawable
 import com.timkwali.payco.home.domain.model.HomeState
 import com.timkwali.payco.home.presentation.component.CardList
 import com.timkwali.payco.home.presentation.component.PortfolioSummary
@@ -53,6 +55,13 @@ fun HomeContent(
         modifier = modifier
             .padding(all = 16.dp)
     ) {
+        IconFromDrawable(
+            drawable = R.drawable.ic_app_logo,
+            tint = colorScheme.tertiary,
+            size = 50.dp,
+            contentDescription = stringResource(R.string.app_logo)
+        )
+
         Spacer(modifier = Modifier.height(50.dp))
 
         PortfolioSummary(

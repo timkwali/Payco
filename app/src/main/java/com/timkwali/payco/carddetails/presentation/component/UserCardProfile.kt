@@ -2,7 +2,6 @@ package com.timkwali.payco.carddetails.presentation.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,8 +21,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.timkwali.payco.R
 import com.timkwali.payco.carddetails.domain.model.CardDetailsState
-import com.timkwali.payco.carddetails.domain.model.CardType
 import com.timkwali.payco.carddetails.presentation.viewmodel.CardDetailsEvent
+import com.timkwali.payco.core.domain.model.CardType
 import com.timkwali.payco.core.presentation.components.image.IconFromDrawable
 import com.timkwali.payco.core.presentation.components.text.BodyText
 import com.timkwali.payco.core.presentation.components.text.TitleText
@@ -62,7 +61,7 @@ fun UserCardProfile(
         ) {
             BodyText(text = stringResource(R.string.card_number))
             Spacer(modifier = Modifier.height(5.dp))
-            TitleText(text = cardDetailsState.getCardResponse?.spacedNumber ?: "")
+            TitleText(text = cardDetailsState.getCardResponse?.maskedNumber ?: "")
         }
 
         Row(
