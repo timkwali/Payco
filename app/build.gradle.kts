@@ -65,7 +65,7 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(libs.turbine)
     testImplementation(libs.kotest.assertions.core)
-    
+    testImplementation(libs.junit.jupiter)
 }
 
 kapt {
