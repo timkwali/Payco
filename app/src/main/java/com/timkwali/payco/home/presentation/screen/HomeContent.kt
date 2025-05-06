@@ -50,7 +50,7 @@ fun HomeContent(
             is HomeUiEffect.NavigateToCardDetails -> onCardDetailsNavigate(effect.card)
             is HomeUiEffect.ShowSnackbar -> Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
             is HomeUiEffect.NavigateToPayment -> onPaymentNavigate()
-            else -> Unit
+            else -> { Unit }
         }
     }
 
