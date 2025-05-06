@@ -1,6 +1,7 @@
 package com.timkwali.payco.login.domain.usecase
 
 import com.timkwali.payco.core.utils.Resource
+import com.timkwali.payco.core.utils.encryptPassword
 import com.timkwali.payco.core.utils.isValidEmail
 import com.timkwali.payco.core.utils.isValidPassword
 import com.timkwali.payco.login.data.api.model.LoginResponse
@@ -20,7 +21,9 @@ class Login (
             if(!isValidEmail(email)) throw Exception("Please provide a valid email address.")
             if(!isValidPassword(password)) throw Exception("Password cannot be empty.")
 
-            emit(Resource.Success(loginRepository.login(email, password)))
+            val encryptedPassword = encryptPassword(password)
+
+            emit(Resource.Success(loginRepository.login(email, encryptedPassword)))
         } catch (e: Exception) {
             emit(Resource.Error(e.message))
         }

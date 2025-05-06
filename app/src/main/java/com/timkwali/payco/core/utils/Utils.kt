@@ -17,3 +17,9 @@ fun isValidEmail(email: String): Boolean {
 fun isValidPassword(password: String): Boolean {
     return password.isNotEmpty()
 }
+
+fun encryptPassword(password: String): String {
+    var encryptedPassword = ""
+    password.forEach { _ -> encryptedPassword += '*' }
+    return encryptedPassword
+}
