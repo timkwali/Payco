@@ -9,7 +9,7 @@
 - 🧾 **Payment Simulation** – Simulate a payment process with custom inputs
 - 🎨 **Jetpack Compose UI** – Built entirely with Compose for a responsive and dynamic user experience
 - 🧪 **Unit Testing** – ViewModel tests using [Koin](https://insert-koin.io) and [Turbine](https://github.com/cashapp/turbine)
-- 🧱 **Modular Architecture** – Clear separation of concerns using MVI and DI
+- 🧱 **Modular Architecture** – Clear separation of concerns using MVI, DI and Clean architecture
 
 ## 🧰 Tech Stack
 
