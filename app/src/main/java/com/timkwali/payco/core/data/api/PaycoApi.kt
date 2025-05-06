@@ -10,7 +10,7 @@ object PaycoApi {
 
     private var tempCard: UserCardResponse? = null
 
-    private var amountToPay = (1..1000).random()
+    private var amountToPay = (1..3000).random()
 
     suspend fun getCards(): List<UserCardResponse> {
         delay(SIMULATED_NETWORK_DELAY)
@@ -113,7 +113,7 @@ object PaycoApi {
 
                     val newCardAmount = tempCard?.amount ?: 0
                     if(newCardAmount < amountToPay) return false
-                    newCardAmount - amountToPay
+                    tempCard = tempCard?.copy(amount = newCardAmount - amountToPay)
                     amountToPay = 0
                     return true
                 }
