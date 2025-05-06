@@ -16,6 +16,7 @@ import com.timkwali.payco.core.utils.NAV_ARG_EMAIL
 import com.timkwali.payco.core.utils.NAV_ARG_NAME
 import com.timkwali.payco.home.presentation.screen.HomeScreen
 import com.timkwali.payco.login.presentation.screen.LoginScreen
+import com.timkwali.payco.payment.presentation.screen.PaymentScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -43,5 +44,7 @@ fun PaycoNavHost(
                 navArgument(NAV_ARG_CARD_ID) { type = NavType.IntType }
             )
         ) { CardDetailsScreen(it, navController) }
+
+        composable(Screen.Payment.route) { PaymentScreen(navController) }
     }
 }

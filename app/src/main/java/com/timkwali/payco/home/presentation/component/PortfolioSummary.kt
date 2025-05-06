@@ -13,7 +13,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.unit.dp
 import com.timkwali.payco.R
 import com.timkwali.payco.core.presentation.components.image.IconFromDrawable
@@ -57,10 +56,10 @@ fun PortfolioSummary(
                 .padding(vertical = 16.dp, horizontal = 10.dp)
         ) {
             BodyText(
-                text = stringResource(R.string.total_portfolio)
+                text = stringResource(R.string.amount_owed)
             )
             SubTitleText(
-                text = "$${homeState.totalPortfolio}",
+                text = "$${homeState.formatedAmount}",
             )
         }
     }

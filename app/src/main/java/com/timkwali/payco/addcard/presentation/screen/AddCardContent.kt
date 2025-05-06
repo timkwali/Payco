@@ -36,7 +36,9 @@ import com.timkwali.payco.R
 import com.timkwali.payco.addcard.domain.model.AddCardState
 import com.timkwali.payco.addcard.presentation.viewmodel.AddCardEvent
 import com.timkwali.payco.addcard.presentation.viewmodel.AddCardUiEffect
+import com.timkwali.payco.core.domain.model.Card
 import com.timkwali.payco.core.presentation.components.button.PaycoButton
+import com.timkwali.payco.core.presentation.components.card.CardForm
 import com.timkwali.payco.core.presentation.components.image.IconFromDrawable
 import com.timkwali.payco.core.presentation.components.progress.PaycoCircularProgress
 import com.timkwali.payco.core.presentation.components.text.BodyText
@@ -76,68 +78,16 @@ fun AddCardContent(
             .padding(horizontal = 16.dp, vertical = 24.dp)
             .verticalScroll(scrollState)
     ) {
-        val trailingIcon = when {
-            addCardState.cardNumber.length < 4 -> null
-            addCardState.cardNumber.first().isDigit() &&
-                    addCardState.cardNumber.first().digitToInt() % 2 == 0 -> R.drawable.ic_master_card
-            else -> R.drawable.ic_visa
-        }
-
-        PaycoTextField(
-            value = addCardState.cardNumber,
+        CardForm(
+            cardNumber = addCardState.cardNumber,
+            cvv = addCardState.cvv,
+            expiryDate = addCardState.expiryDate,
             enabled = !addCardState.isLoading,
-            onValueChange = {
-                val digitsOnly = it.filter { it.isDigit() }
-                if(digitsOnly.length <= MAX_CARD_NUMBERS) {
-                    onEvent(AddCardEvent.OnCardNumberChange(digitsOnly))
-                    if (digitsOnly.length == MAX_CARD_NUMBERS) cvvFocusRequester.requestFocus()
-                }
-            },
-            leadingIcon = { IconFromDrawable(R.drawable.ic_numbers, modifier = Modifier.size(24.dp)) },
-            trailingIcon = trailingIcon?.let { { Image(painterResource(it), contentDescription = "card logo", modifier = Modifier.size(24.dp)) } },
-            label = { BodyText(text = stringResource(R.string.enter_card_number), color = colorScheme.tertiary.copy(alpha = 0.3f)) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            visualTransformation = CardNumberVisualTransformation(),
-            modifier = Modifier.fillMaxWidth().focusRequester(cardFocusRequester)
+            onCardNumberChange = { onEvent(AddCardEvent.OnCardNumberChange(it)) },
+            onCvvChange = { onEvent(AddCardEvent.OnCvvChange(it)) },
+            onExpiryDateChange = { onEvent(AddCardEvent.OnExpiryDateChange(it)) },
+            modifier = Modifier
         )
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            PaycoTextField(
-                value = addCardState.cvv,
-                enabled = !addCardState.isLoading,
-                onValueChange = {
-                    if(it.length <= MAX_CVV_NUMBERS) {
-                        onEvent(AddCardEvent.OnCvvChange(it))
-                        if (it.length == MAX_CVV_NUMBERS) expiryFocusRequester.requestFocus()
-                    }
-                },
-                modifier = Modifier.weight(1f).focusRequester(cvvFocusRequester),
-                leadingIcon = { IconFromDrawable(R.drawable.ic_key, modifier = Modifier.size(24.dp)) },
-                label = { BodyText(text = stringResource(R.string.enter_cvv), color = colorScheme.tertiary.copy(alpha = 0.3f)) },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-            )
-            Spacer(modifier = Modifier.width(4.dp))
-            PaycoTextField(
-                value = addCardState.expiryDate,
-                enabled = !addCardState.isLoading,
-                onValueChange = { it ->
-                    val digitsOnly = it.filter { it.isDigit() }
-                    if(digitsOnly.length <= 4) {
-                        onEvent(AddCardEvent.OnExpiryDateChange(digitsOnly))
-                    }
-                },
-                modifier = Modifier.weight(1f).focusRequester(expiryFocusRequester),
-                leadingIcon = { IconFromDrawable(R.drawable.ic_date, modifier = Modifier.size(24.dp)) },
-                label = { BodyText(text = stringResource(R.string.enter_expiryDate), color = colorScheme.tertiary.copy(alpha = 0.3f)) },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                visualTransformation = ExpiryDateVisualTransformation()
-            )
-        }
 
         Spacer(modifier = Modifier.height(50.dp))
 

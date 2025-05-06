@@ -39,6 +39,7 @@ fun HomeScreen(backStackEntry: NavBackStackEntry, navController: NavController) 
             onEvent = { homeViewModel.onEvent(it) },
             onAddCardNavigate = { navController.navigate(Screen.AddCard.route) },
             onCardDetailsNavigate = { navController.navigate(Screen.CardDetailsWithArgs.createRoute(name = name, cardId = it.id)) },
+            onPaymentNavigate = { navController.navigate(Screen.Payment.route) },
             modifier = Modifier.padding(contentPadding),
             scrollState = scrollState
         )

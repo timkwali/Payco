@@ -6,6 +6,7 @@ sealed class HomeUiEffect {
     data class ShowSnackbar(val message: String) : HomeUiEffect()
     data class NavigateToCardDetails(val card: Card): HomeUiEffect()
     object NavigateToAddCard : HomeUiEffect()
+    object NavigateToPayment : HomeUiEffect()
 }
 
 
