@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enter_card_number">Enter Card number</string>
+    <string name="enter_cvv">Enter Card CVV</string>
+    <string name="enter_expiryDate">Expiry date</string>
+</resources>

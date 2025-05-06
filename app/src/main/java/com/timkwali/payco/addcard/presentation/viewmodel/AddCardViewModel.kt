@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.timkwali.payco.addcard.domain.model.AddCardState
 import com.timkwali.payco.addcard.domain.usecase.AddNewCard
 import com.timkwali.payco.core.utils.Resource
-import com.timkwali.payco.login.presentation.viewmodel.LoginUiEffect
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

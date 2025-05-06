@@ -1,6 +1,5 @@
 package com.timkwali.payco.login.domain.usecase
 
-import android.util.Patterns
 import com.timkwali.payco.core.utils.Resource
 import com.timkwali.payco.core.utils.isValidEmail
 import com.timkwali.payco.core.utils.isValidPassword

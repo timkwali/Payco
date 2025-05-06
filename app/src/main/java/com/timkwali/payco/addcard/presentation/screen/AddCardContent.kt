@@ -58,9 +58,6 @@ fun AddCardContent(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val cardFocusRequester = remember { FocusRequester() }
-    val cvvFocusRequester = remember { FocusRequester() }
-    val expiryFocusRequester = remember { FocusRequester() }
 
     LaunchedEffect(effect) {
         when (effect) {

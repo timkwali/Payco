@@ -1,11 +1,9 @@
 package com.timkwali.payco.core.data.api
 
-import com.timkwali.payco.core.utils.SIMULATED_NETWORK_DELAY
 import com.timkwali.payco.core.data.api.model.UserCardResponse
 import com.timkwali.payco.core.domain.model.Card
-import com.timkwali.payco.core.utils.formatAmount
+import com.timkwali.payco.core.utils.SIMULATED_NETWORK_DELAY
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
 
 object PaycoApi {
     private var userCardResponses = mutableListOf<UserCardResponse>()

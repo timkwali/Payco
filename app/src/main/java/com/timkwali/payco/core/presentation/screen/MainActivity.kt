@@ -9,7 +9,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.timkwali.payco.core.presentation.navigation.PaycoNavHost
 import com.timkwali.payco.core.presentation.theme.PaycoTheme
-import com.timkwali.payco.login.presentation.screen.LoginScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

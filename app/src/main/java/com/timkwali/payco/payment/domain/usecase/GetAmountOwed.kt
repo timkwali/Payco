@@ -2,7 +2,6 @@ package com.timkwali.payco.payment.domain.usecase
 
 import com.timkwali.payco.core.utils.Resource
 import com.timkwali.payco.payment.domain.repository.PaymentRepository
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
 
 class GetAmountOwed(
