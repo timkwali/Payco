@@ -7,6 +7,7 @@ import com.timkwali.payco.core.utils.NAV_ROUTE_ADD_CARD
 import com.timkwali.payco.core.utils.NAV_ROUTE_CARD_DETAILS
 import com.timkwali.payco.core.utils.NAV_ROUTE_HOME
 import com.timkwali.payco.core.utils.NAV_ROUTE_LOGIN
+import com.timkwali.payco.core.utils.NAV_ROUTE_PAYMENT
 
 sealed class Screen(val route: String) {
     data object Login: Screen(NAV_ROUTE_LOGIN)
@@ -20,4 +21,7 @@ sealed class Screen(val route: String) {
     data object CardDetailsWithArgs: Screen("$NAV_ROUTE_CARD_DETAILS/{${NAV_ARG_NAME}}/{${NAV_ARG_CARD_ID}}") {
         fun createRoute(name: String, cardId: Int) = "$NAV_ROUTE_CARD_DETAILS/$name/$cardId"
     }
+
+    data object Payment: Screen(NAV_ROUTE_PAYMENT)
+
 }

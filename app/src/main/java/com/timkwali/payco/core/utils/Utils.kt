@@ -2,7 +2,7 @@ package com.timkwali.payco.core.utils
 
 import android.util.Patterns
 
-fun Int.groupByThrees(): String {
+fun Int.formatAmount(): String {
     return this.toString()
         .reversed()
         .chunked(3)

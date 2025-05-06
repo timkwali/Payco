@@ -1,0 +1,46 @@
+package com.timkwali.payco.payment.presentation.screen
+
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavHostController
+import com.timkwali.payco.R
+import com.timkwali.payco.core.presentation.components.appbar.PaycoAppBar
+import com.timkwali.payco.payment.presentation.viewmodel.PaymentViewModel
+import org.koin.androidx.compose.koinViewModel
+
+@RequiresApi(Build.VERSION_CODES.O)
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PaymentScreen(
+    navController: NavHostController
+) {
+    val paymentViewModel: PaymentViewModel = koinViewModel()
+    val paymentState = paymentViewModel.paymentState.collectAsStateWithLifecycle()
+    val effect = paymentViewModel.uiEffect.collectAsStateWithLifecycle(null)
+    val scrollState = rememberScrollState()
+
+    Scaffold(
+        topBar = { PaycoAppBar(
+            title = stringResource(R.string.payment),
+            onClick = { navController.popBackStack() })
+        }
+    ) { contentPadding ->
+
+        PaymentContent(
+            paymentState = paymentState.value,
+            onEvent = { paymentViewModel.onEvent(it) },
+            scrollState = scrollState,
+            modifier = Modifier.padding(contentPadding),
+            effect = effect.value,
+            onBackNavigate = { navController.popBackStack() }
+        )
+    }
+}

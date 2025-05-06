@@ -3,7 +3,7 @@
     <string name="email_hint">Enter Email</string>
     <string name="password_hint">Enter Password</string>
     <string name="login">Login</string>
-    <string name="total_portfolio">Total Portfolio</string>
+    <string name="amount_owed">Amount Owed</string>
     <string name="cards">Cards</string>
     <string name="no_cards">You have not added any cards yet.</string>
     <string name="add_card">Add Card</string>
@@ -19,4 +19,8 @@
     <string name="successfully_delete_card">Card successfully deleted.</string>
     <string name="successfully_add_card">Card succellfully added</string>
     <string name="app_logo">App Logo</string>
+    <string name="payment">Payment</string>
+    <string name="amount_to_pay">Amount To Pay</string>
+    <string name="pay_with_saved_card">Pay with saved Card</string>
+    <string name="payment_successful">Payment Successful</string>
 </resources>

@@ -17,6 +17,7 @@ const val MAX_CVV_NUMBERS = 3
  **/
 const val NAV_ROUTE_LOGIN = "login"
 const val NAV_ROUTE_HOME = "home"
+const val NAV_ROUTE_PAYMENT = "payment"
 const val NAV_ROUTE_ADD_CARD = "add_card"
 const val NAV_ROUTE_CARD_DETAILS = "card_details"
 const val NAV_ARG_NAME = "name"

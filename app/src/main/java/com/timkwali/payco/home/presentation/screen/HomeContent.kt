@@ -22,6 +22,7 @@ import com.timkwali.payco.R
 import com.timkwali.payco.core.presentation.components.text.BodyText
 import com.timkwali.payco.core.presentation.components.text.SubTitleText
 import com.timkwali.payco.core.domain.model.Card
+import com.timkwali.payco.core.presentation.components.button.PaycoButton
 import com.timkwali.payco.core.presentation.components.image.IconFromDrawable
 import com.timkwali.payco.home.domain.model.HomeState
 import com.timkwali.payco.home.presentation.component.CardList
@@ -35,6 +36,7 @@ fun HomeContent(
     effect: HomeUiEffect?,
     onAddCardNavigate: () -> Unit,
     onCardDetailsNavigate: (Card) -> Unit,
+    onPaymentNavigate: () -> Unit,
     onEvent: (HomeEvent) -> Unit,
     scrollState: ScrollState,
     modifier: Modifier = Modifier
@@ -47,6 +49,7 @@ fun HomeContent(
             is HomeUiEffect.NavigateToAddCard -> onAddCardNavigate()
             is HomeUiEffect.NavigateToCardDetails -> onCardDetailsNavigate(effect.card)
             is HomeUiEffect.ShowSnackbar -> Toast.makeText(context, effect.message, Toast.LENGTH_SHORT).show()
+            is HomeUiEffect.NavigateToPayment -> onPaymentNavigate()
             else -> Unit
         }
     }
@@ -71,6 +74,13 @@ fun HomeContent(
 
         PortfolioSummary(
             homeState = homeState
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        PaycoButton(
+            text = "Pay",
+            onClick = { onEvent(HomeEvent.OnPayClick) }
         )
 
         Spacer(modifier = Modifier.height(60.dp))
@@ -106,6 +116,8 @@ fun HomeContentPreview() {
         onEvent = {},
         onAddCardNavigate = {},
         onCardDetailsNavigate = {},
-        scrollState = rememberScrollState()
+        scrollState = rememberScrollState(),
+        onPaymentNavigate = {},
+        modifier = Modifier
     )
 }

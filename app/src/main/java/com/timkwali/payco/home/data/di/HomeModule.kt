@@ -2,6 +2,7 @@ package com.timkwali.payco.home.data.di
 
 import com.timkwali.payco.home.data.repository.HomeRepositoryImpl
 import com.timkwali.payco.home.domain.repository.HomeRepository
+import com.timkwali.payco.home.domain.usecase.GetAmountOwed
 import com.timkwali.payco.home.domain.usecase.GetCards
 import com.timkwali.payco.home.presentation.viewmodel.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -13,5 +14,7 @@ val homeModule = module {
 
     single { GetCards(get()) }
 
-    viewModel { HomeViewModel(get()) }
+    single { GetAmountOwed(get()) }
+
+    viewModel { HomeViewModel(get(), get()) }
 }
